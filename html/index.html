@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/menu.css">
+
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤔</text></svg>">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>MemoTest</title>
+    
+    </head>
+
+    <body>
+
+        <header class="cabecera">
+
+            <button id="return" class="return"><i class="fa fa-angle-double-left" style="font-size: 20px;"></i></button>
+
+            <div class="contadores">
+
+                <div class="contador-movimientos">
+
+                    <h4 id="mistakes" class="titulo-cabecera">Mistakes</h4>
+                    <div class="numeros-cabecera">
+                        <span id="mov">00</span>/<span id="mov-total"></span>
+                    </div>
+
+                </div>
+
+                <div class="contador-tiempo">
+
+                    <h4 class="titulo-cabecera">Time</h4>
+                    <div class="numeros-cabecera">
+                        <span id="minutos">00</span>:<span id="segundos">00</span>
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <div class="niveles">
+
+                <div class="contador-niveles">
+
+                    <h4 class="titulo-cabecera">Level</h4>
+                    <div class="numeros-cabecera"> <span id="nivel">01</span> </div>
+
+                </div>
+
+            </div>
+
+            <button id="control-nivel" class="control-nivel">…</button>
+
+        </header>
+        
+
+        <main>
+            <div class="mesa">
+                
+                <div id="tablero" class="tablero"></div>
+
+                <div id="main-menu" class="main-menu">
+                    <div class="configurations">
+
+                        <h1 class="main-title">MemoTest</h1>
+
+                        <h2>Game Mode</h2>
+                        <div class="buttons-menu">
+                            <button id="challenge-mode">Challenge Mode</button>
+                            <button id="relax-mode">Relax Mode</button>
+                        </div>
+
+                        <h2>Card Style</h2>
+                        <div class="buttons-style">
+                            <button id="style-0" data-style="space">Space</button>
+                            <button id="style-1" data-style="animals">Animals</button>
+                            <button id="style-2" data-style="medieval">Medieval</button>
+                        </div>
+
+                        <h2>Theme</h2>
+                        <div class="buttons-theme">
+                            <button class="blue-orange" data-style="0"></button>
+                            <button class="violet-pink" data-style="1"></button>
+                            <button class="green-blue" data-style="2"></button>
+                        </div>
+
+                    </div>    
+                </div>
+
+                <div id="finishGame" class="finishGame">
+                    <div class="modal">
+                        <h1>¡¡¡Congratulations!!!</h1>
+                        <h2>&#127882 You won the game &#127882</h2>
+
+                        <button class="reiniciar">¿Reset?</button>
+                        <button class="regresar">To Menu</button>
+                    </div>    
+                </div>
+
+                <div id="finishLevel" class="finishLevel">
+                    <div class="modal">
+                        <h1>¡Good Job!</h1>
+                        <h2>You finish the level</h2>
+
+                        <button id="next" class="next">Next Level</button>
+
+                        <button class="reiniciar">¿Reset?</button>
+                        <button class="regresar">To Menu</button>
+                    </div>    
+                </div>
+
+                <div id="gameOver" class="gameOver">
+                    <div class="modal">
+                        <h1>Game Over</h1>
+                        <h1>&#128169</h1>
+                        <h2 class="type-loss"></h2>
+
+                        <button class="reiniciar">¿Reset?</button>
+                        <button class="regresar">To Menu</button>
+                    </div>    
+                </div>
+
+            </div>
+        </main>
+
+        <div class="selecciona-nivel">
+            <button id="cierra-niveles" class="cierra-niveles">&times;</button>
+            <ul></ul>
+        </div>
+
+        <audio  src="../static/sounds/carta.mp3"
+                class="sonido"
+                id="sonido-carta"
+                preload="auto"     
+        ></audio>
+        <audio  src="../static/sounds/error.mp3"
+                class="sonido"
+                id="sonido-error"
+                preload="auto"     
+        ></audio>
+        <audio  src="../static/sounds/assert.mp3"
+                class="sonido"
+                id="sonido-acierto"
+                preload="auto"      
+        ></audio>
+        <audio  src="../static/sounds/win.mp3"
+                class="sonido"
+                id="sonido-ganar"
+                preload="auto"       
+        ></audio>
+        <audio  src="../static/sounds/lose.mp3"
+                class="sonido"
+                id="sonido-perder"
+                preload="auto"
+        ></audio>
+
+
+        <script src="../js/globalVar.js"></script>
+        
+        <script src="../js/generate-mix.js"></script>
+        
+        <script src="../js/distribute-show.js"></script>
+        
+        <script src="../js/comparing-reset.js"></script>
+        
+        <script src="../js/movement-timer.js"></script>
+
+        <script src="../js/levels-manager.js"></script>
+        <script src="../js/levels-menu.js"></script>
+        
+        <script src="../js/finalize.js"></script>
+
+        <script src="../js/start-themes.js"></script>
+        
+        <script src="../js/game-menu.js"></script>
+
+
+
+        <script src="../js/completeGame.js"></script>
+        
+        
+    </body>
+
+</html>

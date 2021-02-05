@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+:root {
+  --primary: #ED3D11;
+  --secondary: #FFA200;
+  --tertiary: #5D737E;
+
+  --dark: #121228;
+  --light: #f5f5f5;
+}
+*::selection {
+  background-color: transparent;
+}
+*::-moz-selection {
+  background-color: transparent;
+}
+
+*:focus {outline:none}
+
+/*html { overflow-y: hidden; }*/
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--light);
+  color: var(--light);
+  margin: auto;
+  display:block;
+}
+
+
+.cabecera {
+  background-color: var(--tertiary);
+  width: 100%;
+  height: 5em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 20px 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+.return {
+  font-family: 'Quicksand', sans-serif;
+  position: absolute;
+  font-size: 17px;
+  color: whitesmoke;
+  margin: 15px;
+  border: none;
+  background: var(--primary);
+  border-radius: 60px;
+  width: 3em;
+  height: 3em;
+  transition: 100ms ease-in;
+}
+
+.return:hover {
+  background: var(--secondary);
+  color: #121228;
+  transform: scale(1.1);
+}
+
+.contadores {
+  margin-left: 70px;
+}
+
+.contador-tiempo,
+.contador-movimientos {
+  float: left;
+  color: var(--light);
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.niveles {
+  display: flex;
+  margin-left: 90%;
+  text-align: center;
+}
+
+.niveles span {
+  margin-left: 7px;
+}
+
+.contador-niveles {
+  float: left;
+  color: var(--light);
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.contador-tiempo.oculto {
+  display: none;
+}
+
+
+.titulo-cabecera {
+  font-size: 1em;
+  margin-left: 8px;
+  margin-block-end: auto;
+  margin-block-start: auto;
+}
+
+.numeros-cabecera {
+  font-size: 36px;
+  margin: 7px;
+  margin-top: -2px;
+}
+
+.mesa {
+  margin-top: 2%;
+}
+
+.tablero {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarjeta {
+  width: 6rem;
+  height: 6rem;
+  margin: 0.8rem;
+  border-radius:20px;
+  background: linear-gradient(210deg, var(--primary) 21%, var(--secondary) 100%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 20px 40px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: 0.4s;
+  cursor: pointer;
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+
+.contenido {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+  background-color: var(--dark);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  padding-top: 0.4rem;
+}
+
+.contenido::selection {
+  background: transparent;
+}
+
+.tarjeta.descubierta {
+  transform: rotateY(-180deg);
+}
+
+@keyframes cubrir {
+  from {transform: rotateY(-180deg);}
+
+  to {transform: rotateY(0deg);}
+}
+
+@keyframes easeIn {
+  from {opacity: 0;}
+
+  to {opacity: 1;}
+}
+
+@keyframes error {
+  10%,
+  90% {
+    transform: rotateY(-180deg) translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: rotateY(-180deg) translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotateY(-180deg) translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: rotateY(-180deg) translateX(4px);
+  }
+}
+
+@keyframes acierto {
+  from {
+    transform: rotateY(-180deg) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  25% {
+    transform: rotateY(-180deg) scale3d(1.1, 1.1, 1.1);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotateY(-180deg) scale3d(1, 1, 1);
+    opacity: 0;
+  }
+}
+
+.acertada {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.acertada.contenido {
+  animation: acierto 1s ease-in-out forwards;
+}
+
+.error {
+  animation: error 0.50s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.cubrir {
+  animation: cubrir 0.35s linear;
+}
+
+.gameOver,
+.finishGame,
+.finishLevel {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(18, 18, 40, 0.9);
+  z-index: 1;
+}
+
+.gameOver.visible,
+.finishGame.visible,
+.finishLevel.visible {
+  display: flex;
+  animation: easeIn 0.2s linear;
+}
+
+.modal {
+  color: var(--dark);
+  width: 35%;
+  height: 60%;
+  background: whitesmoke;
+  padding: 3rem 3rem 1rem;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  border-color: var(--primary);
+  border-style: solid;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.modal button {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 17px;
+  color: whitesmoke;
+  margin-left: 10px;
+  border: none;
+  background: var(--primary);
+  border-radius: 60px;
+  width: 9em;
+  height: 3em;
+  transition: 100ms ease-in;
+}
+
+.modal button:hover {
+  background: var(--secondary);
+  color: #121228;
+  transform: scale(1.1);
+}
+
+.modal .next {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  color: whitesmoke;
+  margin-left: 10px;
+  border: none;
+  background: var(--primary);
+  border-radius: 70px;
+  width: 20em;
+  height: 4em;
+  transition: 100ms ease-in;
+}
+
+.selecciona-nivel{
+  background-color: var(--hotpink);
+  position: fixed;
+  width: 250px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: translateX(250px);
+  transition: transform .3s;
+  padding: 1rem 2rem;
+}
+
+.selecciona-nivel.visible{
+  transform: translateX(0);
+}
+
+.selecciona-nivel button{
+  background: transparent;
+  padding: 0;
+}
+
+.selecciona-nivel ul{
+  list-style: none;
+  padding-left: 0;
+}
+
+.selecciona-nivel li{
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sonido {
+  display: none;
+}

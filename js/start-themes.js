@@ -72,6 +72,7 @@ function returnMenu(){
     clearInterval(assert);
     clearInterval(checkWin);
     
+    document.querySelector("#control-nivel").classList.add("oculto");
     document.querySelector("#main-menu").classList.add("visible");
     document.querySelector("#gameOver").classList.remove("visible");
     document.querySelector("#finishLevel").classList.remove("visible");
